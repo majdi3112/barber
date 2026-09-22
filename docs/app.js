@@ -394,6 +394,31 @@ function downloadIcs(booking) {
   URL.revokeObjectURL(url);
 }
 
+function setupVideos() {
+  const playAll = () => {
+    document.querySelectorAll("video").forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.controls = false;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      const start = video.play();
+      if (start && typeof start.catch === "function") start.catch(() => {});
+    });
+  };
+
+  playAll();
+  document.addEventListener("DOMContentLoaded", playAll);
+  window.addEventListener("load", playAll);
+  document.addEventListener("touchstart", playAll, { once: true, passive: true });
+  document.addEventListener("click", playAll, { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") playAll();
+  });
+}
+
 window.addEventListener("load", () => {
   document.getElementById("loader").classList.add("hide");
 });
@@ -405,6 +430,7 @@ setupCursor();
 setupReveal();
 setupCountUp();
 setupBooking();
+setupVideos();
 refreshStatus();
 setInterval(refreshStatus, 60000);
 document.addEventListener("visibilitychange", () => {

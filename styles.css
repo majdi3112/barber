@@ -11,9 +11,9 @@
   --cyan: #3da6ff;
   --pole-red: #e31b28;
   --line: rgba(244, 248, 255, 0.12);
-  --serif: "Cormorant Garamond", "Times New Roman", serif;
-  --display: "Cinzel", "Times New Roman", serif;
-  --sans: "Outfit", system-ui, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  --display: "Syne", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
   --radius: 18px;
   --nav-h: 84px;
 }
@@ -168,6 +168,7 @@ button {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   animation: reelzoom 18s ease-in-out infinite alternate;
 }
 
@@ -183,6 +184,18 @@ button {
   to {
     transform: scale(1.08);
   }
+}
+
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
 }
 
 .hero-content > * {

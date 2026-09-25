@@ -733,15 +733,22 @@ video::-webkit-media-controls-overlay-play-button {
   grid-column: 2 / span 2;
 }
 
-.shot img {
+.shot img,
+.shot video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.8s ease, filter 0.8s ease;
   filter: saturate(0.8);
 }
 
-.shot:hover img {
+.shot video {
+  pointer-events: none;
+}
+
+.shot:hover img,
+.shot:hover video {
   transform: scale(1.05);
   filter: saturate(1);
 }

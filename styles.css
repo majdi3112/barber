@@ -582,10 +582,8 @@ video::-webkit-media-controls-overlay-play-button {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
-  align-items: start;
+  display: block;
+  max-width: 720px;
 }
 
 .lede {
